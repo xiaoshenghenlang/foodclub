@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ljh.foodclub.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/fl_main_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50">
+
+            <TextView
+                android:id="@+id/tv_tab_one"
+                android:gravity="center"
+                android:drawableBottom="@mipmap/ic_launcher"
+                android:textColor="@color/tab_bottom"
+                android:textSize="@dimen/sp_12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="1" />
+            <TextView
+                android:id="@+id/tv_tab_two"
+                android:gravity="center"
+                android:drawableBottom="@mipmap/ic_launcher"
+                android:textColor="@color/tab_bottom"
+                android:textSize="@dimen/sp_12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="2" />
+            <TextView
+                android:id="@+id/tv_tab_three"
+                android:gravity="center"
+                android:drawableBottom="@mipmap/ic_launcher"
+                android:textColor="@color/tab_bottom"
+                android:textSize="@dimen/sp_12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="3" />
+            <TextView
+                android:id="@+id/tv_tab_four"
+                android:gravity="center"
+                android:drawableBottom="@mipmap/ic_launcher"
+                android:textColor="@color/tab_bottom"
+                android:textSize="@dimen/sp_12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="4" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
