@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">foodclub</string>
+    <string name="main_tab_home">首页</string>
+    <string name="main_tab_gallery">图库</string>
+    <string name="main_tab_navigate">导航</string>
+    <string name="main_tab_mine">个人</string>
 </resources>

@@ -7,5 +7,7 @@
     <!--tab颜色-->
     <color name="tab_bottom">#60d69b</color>
 
+    <color name="tab_text_pressed">#ffffff</color>
+    <color name="tab_text">#2c2c2c</color>
 
 </resources>

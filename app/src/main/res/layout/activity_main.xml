@@ -18,50 +18,115 @@
             android:layout_weight="1" />
 
         <LinearLayout
-            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_50">
+            android:layout_height="@dimen/dp_50"
+            android:background="@color/tab_bottom"
+            android:gravity="center">
 
-            <TextView
-                android:id="@+id/tv_tab_one"
+            <LinearLayout
+                android:id="@+id/ll_tab_home"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:drawableBottom="@mipmap/ic_launcher"
-                android:textColor="@color/tab_bottom"
-                android:textSize="@dimen/sp_12"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="1" />
-            <TextView
-                android:id="@+id/tv_tab_two"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/iv_tab_home"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:src="@drawable/selector_main_tab_home" />
+
+                <TextView
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:id="@+id/tv_tab_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/main_tab_home"
+                    android:textColor="@drawable/selector_main_tab_text"
+                    android:textSize="@dimen/sp_10" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_tab_gallery"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:drawableBottom="@mipmap/ic_launcher"
-                android:textColor="@color/tab_bottom"
-                android:textSize="@dimen/sp_12"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="2" />
-            <TextView
-                android:id="@+id/tv_tab_three"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/iv_tab_gallery"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:src="@drawable/selector_main_tab_gallery" />
+
+                <TextView
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:id="@+id/tv_tab_gallery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/main_tab_gallery"
+                    android:textColor="@drawable/selector_main_tab_text"
+                    android:textSize="@dimen/sp_10" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_tab_navigate"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:drawableBottom="@mipmap/ic_launcher"
-                android:textColor="@color/tab_bottom"
-                android:textSize="@dimen/sp_12"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="3" />
-            <TextView
-                android:id="@+id/tv_tab_four"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/iv_tab_navigate"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:src="@drawable/selector_main_tab_navigate" />
+
+                <TextView
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:id="@+id/tv_tab_navigate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/main_tab_navigate"
+                    android:textColor="@drawable/selector_main_tab_text"
+                    android:textSize="@dimen/sp_10" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_tab_mine"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:drawableBottom="@mipmap/ic_launcher"
-                android:textColor="@color/tab_bottom"
-                android:textSize="@dimen/sp_12"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="4" />
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/iv_tab_mine"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:src="@drawable/selector_main_tab_mine" />
+
+                <TextView
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:id="@+id/tv_tab_mine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/main_tab_mine"
+                    android:textColor="@drawable/selector_main_tab_text"
+                    android:textSize="@dimen/sp_10" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
