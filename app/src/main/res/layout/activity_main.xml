@@ -26,7 +26,7 @@
             <LinearLayout
                 android:id="@+id/ll_tab_home"
                 android:clickable="true"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:background="?android:attr/selectableItemBackground"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_width="0dp"
@@ -52,7 +52,7 @@
             <LinearLayout
                 android:id="@+id/ll_tab_gallery"
                 android:clickable="true"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:background="?android:attr/selectableItemBackground"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_width="0dp"
@@ -78,7 +78,7 @@
             <LinearLayout
                 android:id="@+id/ll_tab_navigate"
                 android:clickable="true"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:background="?android:attr/selectableItemBackground"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_width="0dp"
@@ -104,7 +104,7 @@
             <LinearLayout
                 android:id="@+id/ll_tab_mine"
                 android:clickable="true"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:background="?android:attr/selectableItemBackground"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_width="0dp"

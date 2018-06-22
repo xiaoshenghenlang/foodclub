@@ -66,8 +66,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        initHomeFragment();
-        setTab(1);
+        initGalleryFragment();
+        setTab(2);
     }
 
     @Override

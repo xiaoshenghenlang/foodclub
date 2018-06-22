@@ -6,8 +6,13 @@
         <item name="colorPrimary">@color/tab_bottom</item>
         <item name="colorPrimaryDark">@color/tab_bottom</item>
         <item name="colorAccent">@color/tab_bottom</item>
+    </style>
+
+    <style name="immersion" parent="AppTheme">
         <item name= "windowActionBar" > false</item>
         <item name= "windowNoTitle" > true</item>
+
+        <item name="android:windowContentTransitions">true</item>
         <!--状态栏是否透明，API 21才出现的属性-->
         <item name= "android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop"> true</item>
 
@@ -17,6 +22,11 @@
         <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">false</item>
         <item name="android:windowTranslucentNavigation" tools:targetApi="kitkat">true</item>
         <!--Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色-->
+    </style>
+
+    <style name="fullscreen" parent="immersion">
+        <!--全屏-->
+        <item name="android:windowFullscreen">true</item>
     </style>
 
 </resources>
