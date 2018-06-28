@@ -22,8 +22,11 @@ public abstract class BaseActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //设置activity为竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //把activity入栈
         MyActivityManager.getInstance().add(this);
+        //设置布局
         setContentView(getLayoutId());
         //初始化ButterKnife
         ButterKnife.bind(this);
@@ -52,7 +55,7 @@ public abstract class BaseActivity extends AppCompatActivity{
         Intent intent;
         intent = new Intent(this, cls);
         activity.startActivity(intent);
-        activity.overridePendingTransition(R.anim.enter_in, R.anim.enter_out);
+        activity.overridePendingTransition(R.anim.activity_enter_in, R.anim.activity_enter_out);
     }
 
     /**
@@ -60,7 +63,7 @@ public abstract class BaseActivity extends AppCompatActivity{
      */
     public void back() {
         finish();
-        this.overridePendingTransition(R.anim.exit_in, R.anim.exit_out);
+        this.overridePendingTransition(R.anim.activity_exit_in, R.anim.activity_exit_out);
     }
 
     /**
@@ -69,7 +72,7 @@ public abstract class BaseActivity extends AppCompatActivity{
     @Override
     public void onBackPressed() {
         finish();
-        this.overridePendingTransition(R.anim.exit_in, R.anim.exit_out);
+        this.overridePendingTransition(R.anim.activity_exit_in, R.anim.activity_exit_out);
 
     }
 }

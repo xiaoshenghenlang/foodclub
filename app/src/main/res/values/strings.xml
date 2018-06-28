@@ -1,7 +1,12 @@
 <resources>
-    <string name="app_name">foodclub</string>
+    <!--main_string-->
+    <string name="app_name">IdolClub</string>
     <string name="main_tab_home">首页</string>
     <string name="main_tab_gallery">图库</string>
     <string name="main_tab_navigate">导航</string>
     <string name="main_tab_mine">个人</string>
+    <!--string-->
+    <string name="double_click_exit">再按一次退出</string>
+    <string name="fans">粉丝</string>
+    <string name="gift">礼物</string>
 </resources>

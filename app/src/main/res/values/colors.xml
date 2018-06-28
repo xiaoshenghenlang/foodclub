@@ -15,11 +15,14 @@
     <color name="user_state_tint">#ECB9B8</color>
 
     <!--基础颜色-->
+    <color name="main_color">#56BEC1</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-    <color name="gray">#c3c3c3</color>
     <color name="black_3c">#3c3c3c</color>
     <color name="gray_f9">#F9F9F9</color>
+    <color name="gray_view">#e7e7e7</color>
+    <color name="gray">#c3c3c3</color>
+    <color name="gray_trans">#9999</color>
     <color name="gray_a8">#a8a8a8</color>
 
 </resources>

@@ -21,7 +21,11 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity android:name=".activity.GuideActivity"
+            android:theme="@style/fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,7 +39,10 @@
             android:theme="@style/fullscreen">
 
         </activity>
-        <activity android:name=".activity.IdolInfoActivity"/>
+        <activity android:name=".activity.IdolInfoActivity">
+        </activity>
+        <activity android:name=".activity.ImgDetailActivity"
+            android:theme="@style/fullscreen"/>
     </application>
 
 </manifest>

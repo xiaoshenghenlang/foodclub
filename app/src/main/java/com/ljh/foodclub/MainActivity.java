@@ -2,12 +2,14 @@ package com.ljh.foodclub;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ljh.foodclub.base.BaseActivity;
 import com.ljh.foodclub.fragment.GalleryFragment;
@@ -52,9 +54,34 @@ public class MainActivity extends BaseActivity {
     private GalleryFragment galleryFragment;
     private NavigateFragment navigationFragment;
     private MineFragment mineFragment;
+    //双击退出的firstTime
+    private long firstTime = 0;
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+//        if(homeFragment!=null){
+//            getSupportFragmentManager().putFragment(outState,"1",homeFragment);
+//        }
+//        if(galleryFragment!=null){
+//            getSupportFragmentManager().putFragment(outState,"2",galleryFragment);
+//        }
+//        if(navigationFragment!=null){
+//            getSupportFragmentManager().putFragment(outState,"3",navigationFragment);
+//        }
+//        if(mineFragment!=null){
+//            getSupportFragmentManager().putFragment(outState,"4",mineFragment);
+//        }
+        super.onSaveInstanceState(outState);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(savedInstanceState!=null){
+//            homeFragment = (HomeFragment) getSupportFragmentManager().getFragment(savedInstanceState,"1");
+//            galleryFragment = (GalleryFragment) getSupportFragmentManager().getFragment(savedInstanceState,"2");
+//            navigationFragment = (NavigateFragment) getSupportFragmentManager().getFragment(savedInstanceState,"3");
+//            mineFragment = (MineFragment) getSupportFragmentManager().getFragment(savedInstanceState,"4");
+        }
         super.onCreate(savedInstanceState);
     }
 
@@ -62,6 +89,7 @@ public class MainActivity extends BaseActivity {
     protected int getLayoutId() {
         return R.layout.activity_main;
     }
+
 
 
     @Override
@@ -212,6 +240,27 @@ public class MainActivity extends BaseActivity {
         if(mineFragment != null){
             transaction.hide(mineFragment);
         }
+    }
+
+    /**
+     * 双击退出
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (keyCode==KeyEvent.KEYCODE_BACK){
+            long secondTime = System.currentTimeMillis();
+            if (secondTime-firstTime>2000){
+                Toast.makeText(this, R.string.double_click_exit,Toast.LENGTH_SHORT).show();
+                firstTime = System.currentTimeMillis();
+                return true;
+            }else {
+                finish();
+            }
+        }
+        return super.onKeyUp(keyCode, event);
     }
 
 }
