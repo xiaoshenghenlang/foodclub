@@ -23,26 +23,28 @@
         </provider>
         <activity android:name=".MainActivity"
             android:launchMode="singleTask">
-        </activity>
-        <activity android:name=".activity.GuideActivity"
-            android:theme="@style/fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.GuideActivity"
+            android:theme="@style/fullscreen">
+        </activity>
         <activity android:name=".activity.SettingsActivity">
 
         </activity>
         <activity android:name=".activity.PhotoViewActivity"
-            android:theme="@style/fullscreen">
+            android:theme="@style/trans_activity">
 
         </activity>
         <activity android:name=".activity.IdolInfoActivity">
         </activity>
         <activity android:name=".activity.ImgDetailActivity"
             android:theme="@style/fullscreen"/>
+        <activity android:name=".base.BaseWebActivity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

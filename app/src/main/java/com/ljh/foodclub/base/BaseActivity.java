@@ -31,6 +31,8 @@ public abstract class BaseActivity extends AppCompatActivity{
         //初始化ButterKnife
         ButterKnife.bind(this);
 
+        dealIntentData();
+
         initView();
 
         initListeners();
@@ -38,13 +40,17 @@ public abstract class BaseActivity extends AppCompatActivity{
         loadData();
     }
 
+    //获取layout
     protected abstract int getLayoutId();
-
+    //初始化控件
     protected abstract void initView();
-
+    //初始化listener
     protected abstract void initListeners();
-
+    //加载数据
     protected abstract void loadData();
+    //用于处理Intent数据,因为非必须使用，所以用的时候重写即可
+    protected void dealIntentData(){
+    }
 
     /**
      * 新建一个activity打开
@@ -72,7 +78,6 @@ public abstract class BaseActivity extends AppCompatActivity{
     @Override
     public void onBackPressed() {
         finish();
-        this.overridePendingTransition(R.anim.activity_exit_in, R.anim.activity_exit_out);
-
+//        this.overridePendingTransition(R.anim.activity_exit_in, R.anim.activity_exit_out);
     }
 }

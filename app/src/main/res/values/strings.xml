@@ -1,12 +1,16 @@
 <resources>
     <!--main_string-->
-    <string name="app_name">IdolClub</string>
+    <string name="app_name">FoodClub</string>
     <string name="main_tab_home">首页</string>
-    <string name="main_tab_gallery">图库</string>
+    <string name="main_tab_gallery">卡册</string>
     <string name="main_tab_navigate">导航</string>
     <string name="main_tab_mine">个人</string>
     <!--string-->
     <string name="double_click_exit">再按一次退出</string>
     <string name="fans">粉丝</string>
     <string name="gift">礼物</string>
+    <string name="message">动态</string>
+    <string name="ta_product">Ta的商品</string>
+    <string name="gift_rank">礼物榜</string>
+    <string name="load_error">加载错误</string>
 </resources>

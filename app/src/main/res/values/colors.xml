@@ -24,5 +24,6 @@
     <color name="gray">#c3c3c3</color>
     <color name="gray_trans">#9999</color>
     <color name="gray_a8">#a8a8a8</color>
+    <color name="transparent">#0000</color>
 
 </resources>

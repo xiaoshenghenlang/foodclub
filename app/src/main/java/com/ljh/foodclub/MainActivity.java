@@ -72,6 +72,7 @@ public class MainActivity extends BaseActivity {
 //            getSupportFragmentManager().putFragment(outState,"4",mineFragment);
 //        }
         super.onSaveInstanceState(outState);
+
     }
 
     @Override
@@ -94,8 +95,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        initGalleryFragment();
-        setTab(2);
+        initHomeFragment();
+        setTab(1);
     }
 
     @Override

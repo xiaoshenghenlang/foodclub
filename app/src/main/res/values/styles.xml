@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/tab_bottom</item>
     </style>
 
+    <!--沉浸式状态栏-->
     <style name="immersion" parent="AppTheme">
         <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
         <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
@@ -16,6 +17,17 @@
     <style name="fullscreen" parent="immersion">
         <!--全屏-->
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <!--透明activity-->
+    <style name="trans_activity" parent="AppTheme">
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/black</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
+        <!--<item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>-->
     </style>
 
     <style name="toolbar" parent="Base.Widget.AppCompat.ActionBar">
@@ -29,6 +41,28 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
+        <!-- 屏幕背景变暗 -->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="moreDialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <!-- 屏幕背景变暗 -->
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="loadDialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
         <!-- 屏幕背景变暗 -->
         <item name="android:backgroundDimEnabled">true</item>
     </style>
