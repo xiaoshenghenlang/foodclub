@@ -80,4 +80,5 @@ public abstract class BaseActivity extends AppCompatActivity{
         finish();
 //        this.overridePendingTransition(R.anim.activity_exit_in, R.anim.activity_exit_out);
     }
+
 }

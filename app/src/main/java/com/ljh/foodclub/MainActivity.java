@@ -1,7 +1,7 @@
 package com.ljh.foodclub;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -16,6 +16,10 @@ import com.ljh.foodclub.fragment.GalleryFragment;
 import com.ljh.foodclub.fragment.HomeFragment;
 import com.ljh.foodclub.fragment.MineFragment;
 import com.ljh.foodclub.fragment.NavigateFragment;
+import com.ljh.foodclub.utils.AnimUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -56,34 +60,40 @@ public class MainActivity extends BaseActivity {
     private MineFragment mineFragment;
     //双击退出的firstTime
     private long firstTime = 0;
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-//        if(homeFragment!=null){
-//            getSupportFragmentManager().putFragment(outState,"1",homeFragment);
-//        }
-//        if(galleryFragment!=null){
-//            getSupportFragmentManager().putFragment(outState,"2",galleryFragment);
-//        }
-//        if(navigationFragment!=null){
-//            getSupportFragmentManager().putFragment(outState,"3",navigationFragment);
-//        }
-//        if(mineFragment!=null){
-//            getSupportFragmentManager().putFragment(outState,"4",mineFragment);
-//        }
-        super.onSaveInstanceState(outState);
-
-    }
+    private List<Fragment> fragmentList = new ArrayList<>();
+    private static final String HOME_FRAGMENT_KEY = "homeFragment";
+    private static final String GALLERY_FRAGMENT_KEY = "galleryFragment";
+    private static final String NAVIGATION_FRAGMENT_KEY = "navigationFragment";
+    private static final String MINE_FRAGMENT_KEY = "mineFragment";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if(savedInstanceState!=null){
-//            homeFragment = (HomeFragment) getSupportFragmentManager().getFragment(savedInstanceState,"1");
-//            galleryFragment = (GalleryFragment) getSupportFragmentManager().getFragment(savedInstanceState,"2");
-//            navigationFragment = (NavigateFragment) getSupportFragmentManager().getFragment(savedInstanceState,"3");
-//            mineFragment = (MineFragment) getSupportFragmentManager().getFragment(savedInstanceState,"4");
-        }
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            /*获取保存的fragment  没有的话返回null*/
+            homeFragment = (HomeFragment) getSupportFragmentManager().findFragmentByTag(HOME_FRAGMENT_KEY);
+            galleryFragment = (GalleryFragment) getSupportFragmentManager().findFragmentByTag(GALLERY_FRAGMENT_KEY);
+            navigationFragment = (NavigateFragment) getSupportFragmentManager().findFragmentByTag(NAVIGATION_FRAGMENT_KEY);
+            mineFragment = (MineFragment) getSupportFragmentManager().findFragmentByTag(MINE_FRAGMENT_KEY);
+
+            addToList(homeFragment);
+            addToList(galleryFragment);
+            addToList(navigationFragment);
+            addToList(mineFragment);
+
+        } else {
+            //默认显示homeFragment
+            homeFragment = new HomeFragment();
+            addFragment(homeFragment,HOME_FRAGMENT_KEY);
+            showFragment(homeFragment);
+            setTab(1);
+        }
+    }
+
+    private void addToList(Fragment fragment) {
+        if (fragment != null) {
+            fragmentList.add(fragment);
+        }
     }
 
     @Override
@@ -91,12 +101,8 @@ public class MainActivity extends BaseActivity {
         return R.layout.activity_main;
     }
 
-
-
     @Override
     protected void initView() {
-        initHomeFragment();
-        setTab(1);
     }
 
     @Override
@@ -106,33 +112,52 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void loadData() {
-
     }
 
     @OnClick({R.id.ll_tab_home, R.id.ll_tab_gallery, R.id.ll_tab_navigate, R.id.ll_tab_mine})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_tab_home:
-                initHomeFragment();
+                AnimUtils.startAnim(ivTabHome);
+                if (homeFragment == null) {
+                    homeFragment = new HomeFragment();
+                }
+                addFragment(homeFragment,HOME_FRAGMENT_KEY);
+                showFragment(homeFragment);
                 setTab(1);
                 break;
             case R.id.ll_tab_gallery:
-                initGalleryFragment();
+                AnimUtils.startAnim(ivTabGallery);
+                if (galleryFragment == null) {
+                    galleryFragment = new GalleryFragment();
+                }
+                addFragment(galleryFragment,GALLERY_FRAGMENT_KEY);
+                showFragment(galleryFragment);
                 setTab(2);
                 break;
             case R.id.ll_tab_navigate:
-                initNavigationFragment();
+                AnimUtils.startAnim(ivTabNavigate);
+                if (navigationFragment == null) {
+                    navigationFragment = new NavigateFragment();
+                }
+                addFragment(navigationFragment,NAVIGATION_FRAGMENT_KEY);
+                showFragment(navigationFragment);
                 setTab(3);
                 break;
             case R.id.ll_tab_mine:
-                initMineFragment();
+                AnimUtils.startAnim(ivTabMine);
+                if (mineFragment == null) {
+                    mineFragment = new MineFragment();
+                }
+                addFragment(mineFragment,MINE_FRAGMENT_KEY);
+                showFragment(mineFragment);
                 setTab(4);
                 break;
         }
     }
 
     //选择tab
-    private void setTab(int position){
+    private void setTab(int position) {
         //全部状态置为false
         tvTabHome.setSelected(false);
         tvTabGallery.setSelected(false);
@@ -143,7 +168,7 @@ public class MainActivity extends BaseActivity {
         ivTabNavigate.setSelected(false);
         ivTabMine.setSelected(false);
         //根据选中的置为true
-        switch (position){
+        switch (position) {
             case 1:
                 tvTabHome.setSelected(true);
                 ivTabHome.setSelected(true);
@@ -163,105 +188,55 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    //显示HomeFragment
-    private void initHomeFragment(){
-        //开启事务，fragment的控制是由事务来实现的
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-        //第一种方式（add），初始化fragment并添加到事务中，如果为null就new一个
-        if(homeFragment == null){
-            homeFragment = new HomeFragment();
-            transaction.add(R.id.fl_main_fragment, homeFragment);
+    /*添加fragment*/
+    private void addFragment(Fragment fragment,String tag) {
+        /*判断该fragment是否已经被添加过  如果没有被添加  则添加*/
+        if (!fragment.isAdded()) {
+            getSupportFragmentManager().beginTransaction().add(R.id.fl_main_fragment, fragment,tag).commit();
+            /*添加到 fragmentList*/
+            fragmentList.add(fragment);
         }
-        //隐藏所有fragment
-        hideFragment(transaction);
-        //显示需要显示的fragment
-        transaction.show(homeFragment);
-
-        //提交事务
-        transaction.commit();
     }
 
-    //显示GalleryFragment
-    private void initGalleryFragment(){
-        //开启事务，fragment的控制是由事务来实现的
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-        if(galleryFragment == null){
-            galleryFragment = new GalleryFragment();
-            transaction.add(R.id.fl_main_fragment,galleryFragment);
+    //展示fragment并隐藏所有的fragment
+    private void showFragment(Fragment fragment) {
+        for (Fragment frag : fragmentList) {
+            if (frag != fragment) {
+                /*先隐藏其他fragment*/
+                getSupportFragmentManager().beginTransaction().hide(frag).commit();
+            }
         }
-        hideFragment(transaction);
-        transaction.show(galleryFragment);
-
-        transaction.commit();
-    }
-
-    //显示NavigationFragment
-    private void initNavigationFragment(){
-        //开启事务，fragment的控制是由事务来实现的
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-        if(navigationFragment == null){
-            navigationFragment = new NavigateFragment();
-            transaction.add(R.id.fl_main_fragment,navigationFragment);
-        }
-        hideFragment(transaction);
-        transaction.show(navigationFragment);
-
-        transaction.commit();
-    }
-
-    //显示第MineFragment
-    private void initMineFragment(){
-        //开启事务，fragment的控制是由事务来实现的
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-        if(mineFragment == null){
-            mineFragment = new MineFragment();
-            transaction.add(R.id.fl_main_fragment,mineFragment);
-        }
-        hideFragment(transaction);
-        transaction.show(mineFragment);
-
-        transaction.commit();
-    }
-
-    //隐藏所有的fragment
-    private void hideFragment(FragmentTransaction transaction){
-        if(homeFragment != null){
-            transaction.hide(homeFragment);
-        }
-        if(galleryFragment != null){
-            transaction.hide(galleryFragment);
-        }
-        if(navigationFragment != null){
-            transaction.hide(navigationFragment);
-        }
-        if(mineFragment != null){
-            transaction.hide(mineFragment);
-        }
+        getSupportFragmentManager().beginTransaction().show(fragment).commit();
     }
 
     /**
      * 双击退出
+     *
      * @param keyCode
      * @param event
      * @return
      */
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        if (keyCode==KeyEvent.KEYCODE_BACK){
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             long secondTime = System.currentTimeMillis();
-            if (secondTime-firstTime>2000){
-                Toast.makeText(this, R.string.double_click_exit,Toast.LENGTH_SHORT).show();
+            if (secondTime - firstTime > 2000) {
+                Toast.makeText(this, R.string.double_click_exit, Toast.LENGTH_SHORT).show();
                 firstTime = System.currentTimeMillis();
                 return true;
-            }else {
+            } else {
                 finish();
             }
         }
         return super.onKeyUp(keyCode, event);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ivTabHome.clearAnimation();
+        ivTabGallery.clearAnimation();
+        ivTabNavigate.clearAnimation();
+        ivTabMine.clearAnimation();
+    }
 }

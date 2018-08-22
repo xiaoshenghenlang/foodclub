@@ -53,6 +53,9 @@ public class GiftRankFragment extends BaseFragment {
         ImgLoader.loadCircleImg(getContext(),"http://upload.mnw.cn/2017/0814/1502698443378.jpg",ivHeadSecond);
         ImgLoader.loadCircleImg(getContext(),"http://upload.mnw.cn/2017/0814/1502698443378.jpg",ivHeadFirst);
         ImgLoader.loadCircleImg(getContext(),"http://upload.mnw.cn/2017/0814/1502698443378.jpg",ivHeadThird);
+        //NestScrollView嵌套recycleview处理卡顿
+        rv.setHasFixedSize(true);
+        rv.setNestedScrollingEnabled(false);
         rv.setAdapter(new GiftRankAdapter(getContext(),R.layout.rv_item_giftrank,list));
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setFocusableInTouchMode(false);
