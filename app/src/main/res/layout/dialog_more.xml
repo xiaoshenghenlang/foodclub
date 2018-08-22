@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_110">
+
+    <LinearLayout
+        android:elevation="@dimen/dp_3"
+        android:orientation="vertical"
+        android:background="@drawable/shape_corners_stroke_white_f8"
+        android:layout_width="@dimen/dp_90"
+        android:layout_height="@dimen/dp_100">
+        <TextView
+            android:background="@drawable/selector_more_dialog_item_top_bg"
+            android:padding="@dimen/dp_8"
+            android:id="@+id/tv_refresh"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_12"
+            android:text="刷新"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <View
+            android:background="@color/gray_c3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0_5"/>
+        <TextView
+            android:background="@drawable/selector_more_dialog_item_bg"
+            android:id="@+id/tv_copy_url"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp_8"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_12"
+            android:text="复制链接"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <View
+            android:background="@color/gray_c3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0_5"/>
+        <TextView
+            android:background="@drawable/selector_more_dialog_item_bottom_bg"
+            android:id="@+id/tv_open_browser"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp_8"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_12"
+            android:text="浏览器中打开"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+    </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

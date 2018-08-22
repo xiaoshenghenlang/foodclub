@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <LinearLayout
+        android:id="@+id/ll_circle"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/dp_50"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_circle_first"
+            android:src="@drawable/shape_oval_gray"
+            android:layout_width="@dimen/dp_5"
+            android:layout_height="@dimen/dp_5" />
+        <ImageView
+            android:id="@+id/iv_circle_second"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:src="@drawable/shape_oval_gray"
+            android:layout_width="@dimen/dp_5"
+            android:layout_height="@dimen/dp_5" />
+        <ImageView
+            android:id="@+id/iv_circle_third"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:src="@drawable/shape_oval_gray"
+            android:layout_width="@dimen/dp_5"
+            android:layout_height="@dimen/dp_5" />
+    </LinearLayout>
+    <TextView
+        android:elevation="@dimen/dp_3"
+        android:visibility="gone"
+        android:id="@+id/tv_enter"
+        android:layout_marginBottom="@dimen/dp_100"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_corners_five_main_color"
+        android:text="@string/app_name"
+        android:paddingBottom="@dimen/dp_8"
+        android:paddingTop="@dimen/dp_8"
+        android:paddingLeft="@dimen/dp_15"
+        android:paddingRight="@dimen/dp_15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
